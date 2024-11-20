@@ -247,7 +247,7 @@
 	var/draw_features = !HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
-		new_limbs += BP.get_limb_icon(draw_external_organs = draw_features)
+		new_limbs += BP.get_limb_icon()
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 		limb_icon_cache[icon_render_key] = new_limbs

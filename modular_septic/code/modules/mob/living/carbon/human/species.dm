@@ -44,7 +44,6 @@
 	var/examine_icon_state = "human"
 
 /datum/species/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	SHOULD_CALL_PARENT(TRUE)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
 		C.gender = PLURAL
@@ -132,7 +131,6 @@
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
 /datum/species/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
-	SHOULD_CALL_PARENT(TRUE)
 	if(C.dna.species.exotic_bloodtype)
 		C.dna.blood_type = random_blood_type()
 	if(DIGITIGRADE in species_traits)
@@ -293,13 +291,12 @@
 		// Apply cold slow down
 		humi.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/cold, multiplicative_slowdown = ((bodytemp_cold_damage_limit - humi.bodytemperature) / COLD_SLOWDOWN_FACTOR))
 		// Display alerts based how cold it is
-		switch(humi.bodytemperature)
-			if(201 to bodytemp_cold_damage_limit)
-				humi.update_hud_bodytemperature(2)
-			if(120 to 200)
-				humi.update_hud_bodytemperature(1)
-			else
-				humi.update_hud_bodytemperature(0)
+		if(humi.bodytemperature >= 201 && humi.bodytemperature <= bodytemp_cold_damage_limit)
+			humi.update_hud_bodytemperature(2)
+		else if(humi.bodytemperature >= 120 && humi.bodytemperature <= 200)
+			humi.update_hud_bodytemperature(1)
+		else
+			humi.update_hud_bodytemperature(0)
 	// We are not too hot nor cold, remove status and modifiers
 	else
 		humi.update_hud_bodytemperature(3)
@@ -330,13 +327,12 @@
 	// Body temperature is too cold, and we do not have resist traits
 	else if(area_temp < bodytemp_cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
 		// Display alerts based how cold it is
-		switch(area_temp)
-			if(201 to bodytemp_cold_damage_limit)
-				humi.update_hud_temperature(2)
-			if(120 to 200)
-				humi.update_hud_temperature(1)
-			else
-				humi.update_hud_temperature(0)
+		if(area_temp >= 201 && area_temp <= bodytemp_cold_damage_limit)
+			humi.update_hud_temperature(2)
+		else if(area_temp >= 120 && area_temp <= 200)
+			humi.update_hud_temperature(1)
+		else
+			humi.update_hud_temperature(0)
 	// We are not too hot nor cold, remove status and modifiers
 	else
 		humi.update_hud_temperature(3)

@@ -151,7 +151,7 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-/obj/structure/reagent_dispensers/fueltank/large/boom()
+/obj/structure/reagent_dispensers/fueltank/large/boom(violent = FALSE)
 	explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
 	qdel(src)
 

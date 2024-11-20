@@ -196,7 +196,7 @@
  * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
  * drop_if_replaced - if there's an organ in the slot already, whether we drop it afterwards
  */
-/obj/item/organ/proc/Insert(mob/living/carbon/new_owner, special = FALSE, drop_if_replaced = TRUE, new_zone = null)
+/obj/item/organ/proc/Insert(mob/living/carbon/new_owner, special = FALSE, drop_if_replaced = TRUE, new_zone)
 	. = FALSE
 	if(!istype(new_owner) || (owner == new_owner))
 		return

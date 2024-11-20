@@ -23,7 +23,7 @@
 		item_overlay.color = "#FF0000"
 	else
 		item_overlay.color = "#00FF00"
-	item_overlay.filters += filter("outline", size = 1, color = item_overlay.color)
+//	item_overlay.filters += filter("outline", size = 1, color = item_overlay.color)
 
 	cut_overlay(object_overlay)
 	object_overlay = item_overlay

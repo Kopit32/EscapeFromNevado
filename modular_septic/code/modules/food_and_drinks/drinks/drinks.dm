@@ -36,12 +36,12 @@
 /obj/item/reagent_containers/food/drinks/soda_cans/pepsi/diet
 	name = "Diet Pepsi"
 	desc = "A refreshing cola that tastes like water and doesn't offer any benefits."
-	//desc = "Replacing the sugar in the original drink with a concentrated \"Baphomet\" essence.\n\
-			<span class='dead'>WARNING: Excessive consumption of this product is linked with:\n\
-			Depression, anhedonia, autism, gynecomastia, tumor growth around the pubic region, erectile dysfunction, \
-			premature ejaculation, retrograde ejaculation, wet dreams, infertility, elevated libido, compulsive sexual behavior, \
-			post-coital tristesse, dyspareunia, vaginismus, vulvodynia, vulvar vestibulitis, peyronie's disease, priapism, \
-			pelvic floor dysfunctions, urinary incontinence, pelvic organ prolapse, menopause, male periods.</span>" NEVER do this.
+	/*desc = "Replacing the sugar in the original drink with a concentrated \"Baphomet\" essence.
+			<span class='dead'>WARNING: Excessive consumption of this product is linked with:
+			Depression, anhedonia, autism, gynecomastia, tumor growth around the pubic region, erectile dysfunction,
+			premature ejaculation, retrograde ejaculation, wet dreams, infertility, elevated libido, compulsive sexual behavior,
+			post-coital tristesse, dyspareunia, vaginismus, vulvodynia, vulvar vestibulitis, peyronie's disease, priapism,
+			pelvic floor dysfunctions, urinary incontinence, pelvic organ prolapse, menopause, male periods.</span>" NEVER do this.*/
 	icon = 'modular_septic/icons/obj/items/soder.dmi'
 	icon_state = "pepsi_diet"
 	list_reagents = list(/datum/reagent/consumable/pepsi/diet = 30)

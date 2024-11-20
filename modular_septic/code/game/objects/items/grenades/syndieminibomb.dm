@@ -30,9 +30,9 @@
 	. = ..()
 	if(active)
 		flick("[base_icon_state]_open", src)
-		sleep(1.3)
-		icon_state = "[initial(icon_state)]_active"
-		annoying_fucking_beeping()
+		spawn(1.3)
+			icon_state = "[initial(icon_state)]_active"
+			annoying_fucking_beeping()
 
 /obj/item/grenade/syndieminibomb/proc/annoying_fucking_beeping()
 	if(active)
@@ -71,9 +71,9 @@
 	. = ..()
 	if(active)
 		flick("[base_icon_state]_open", src)
-		sleep(1.3)
-		icon_state = "[initial(icon_state)]_active"
-		annoying_fucking_beeping()
+		spawn(1.3)
+			icon_state = "[initial(icon_state)]_active"
+			annoying_fucking_beeping()
 
 /obj/item/grenade/frag/semtex
 	name = "semtex grenade"

@@ -373,19 +373,21 @@
 	operating = TRUE
 	do_animate("opening")
 	set_opacity(0)
-	sleep(5)
-	set_density(FALSE)
-	flags_1 &= ~PREVENT_CLICK_UNDER_1
-	sleep(5)
-	layer = initial(layer)
-	update_appearance()
-	set_opacity(0)
-	operating = FALSE
-	air_update_turf(TRUE, FALSE)
-	update_freelook_sight()
-	if(autoclose)
-		autoclose_in(DOOR_CLOSE_WAIT)
-	return 1
+//	sleep(5)
+	spawn(5)
+		set_density(FALSE)
+		flags_1 &= ~PREVENT_CLICK_UNDER_1
+//	sleep(5)
+	spawn(5)
+		layer = initial(layer)
+		update_appearance()
+		set_opacity(0)
+		operating = FALSE
+		air_update_turf(TRUE, FALSE)
+		update_freelook_sight()
+		if(autoclose)
+			autoclose_in(DOOR_CLOSE_WAIT)
+		return 1
 
 /obj/machinery/door/proc/close()
 	if(density)

@@ -149,7 +149,7 @@
 /turf/open/floor/low_wall/break_tile()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-/turf/open/floor/low_wall/proc/on_painted(turf/closed/wall/low_wall/source, is_dark_color = FALSE)
+/turf/open/floor/low_wall/proc/on_painted(/turf/open/floor/low_wall/source, is_dark_color = FALSE)
 	SIGNAL_HANDLER
 
 	if(is_dark_color)

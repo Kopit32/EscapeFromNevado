@@ -105,10 +105,10 @@
 		if(amount_fed)
 			jumpscare.flash_scare(user, null)
 			evil_gun.say("FED [amount_fed].")
-			if(ishuman(user))
-				var/mob/living/carbon/human/human_user = user
-				if(prob(10))
-					human_user.agony_scream()
+//			if(ishuman(user))
+//				var/mob/living/carbon/human/human_user = user
+//				if(prob(10))
+//					human_user.agony_scream()
 		qdel(bloody)
 		playsound(source, 'modular_septic/sound/insanity/poopmadness/pm9alarm.ogg', 80, vary = FALSE)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -128,8 +128,8 @@
 			evil_gun.say("FED [amount_fed].")
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
-				if(prob(10))
-					human_user.agony_scream()
+//				if(prob(10))
+//					human_user.agony_scream()
 		qdel(target)
 		playsound(source, 'modular_septic/sound/insanity/poopmadness/pm9alarm.ogg', 80, vary = FALSE)
 	return COMPONENT_CANCEL_ATTACK_CHAIN

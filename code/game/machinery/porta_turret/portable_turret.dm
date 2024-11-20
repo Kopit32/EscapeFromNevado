@@ -506,12 +506,13 @@ DEFINE_BITFIELD(turret_flags, list(
 	raising = 1
 	if(cover)
 		flick("popup", cover)
-	sleep(POPUP_ANIM_TIME)
-	raising = 0
-	if(cover)
-		cover.icon_state = "openTurretCover"
-	raised = 1
-	layer = MOB_LAYER
+	spawn(POPUP_ANIM_TIME)
+//	sleep(POPUP_ANIM_TIME)
+		raising = 0
+		if(cover)
+			cover.icon_state = "openTurretCover"
+		raised = 1
+		layer = MOB_LAYER
 
 /obj/machinery/porta_turret/proc/popDown() //pops the turret down
 	if(raising || !raised)

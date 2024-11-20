@@ -1,6 +1,6 @@
 // Mutant colors
 /datum/preference/color/mutant_color/is_accessible(datum/preferences/preferences)
-	return FALSE
+	return ..()
 
 /datum/preference/tri_color/mutant_colors
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

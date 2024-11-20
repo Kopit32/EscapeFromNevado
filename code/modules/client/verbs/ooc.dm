@@ -234,8 +234,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			displayed_key = C.holder.fakekey
 
 		// Use the player's key if they're not using a fakekey
-		else
-			displayed_key = C.key
+		else displayed_key = C.key
 
 		// Check if both we and the player are ghosts and they're not using a fakekey
 		if(isobserver(mob) && isobserver(C.mob) && !C.holder?.fakekey)
@@ -244,8 +243,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			players["[displayed_key](ghost)"] = displayed_key
 
 		// Add the player's displayed key to the list if we or the player aren't a ghost or they're using a fakekey
-		else
-			players[displayed_key] = displayed_key
+		else players[displayed_key] = displayed_key
 
 	// Check if the list is empty
 	if(!players.len)

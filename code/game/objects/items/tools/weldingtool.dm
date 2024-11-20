@@ -365,6 +365,7 @@
 
 /obj/item/weldingtool/hugetank
 	name = "upgraded industrial welding tool"
+	icon = 'icons/obj/tools.dmi'
 	desc = "An upgraded welder based of the industrial welder."
 	icon_state = "upindwelder"
 	inhand_icon_state = "upindwelder"

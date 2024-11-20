@@ -106,12 +106,13 @@
 				. += span_info("Currently being called by <b>[connected_phone.simcard.username]</b>.")
 			if(CONNECTION_CALLING)
 				. += span_info("Currently calling <b>[connected_phone.simcard.username]</b>.")
-	if(!simcard.username)
-		. += span_warning("[simcard]] has no username.")
-	else
-		. += span_info("<b>Username:</b> [simcard.username]")
-	. += span_info("<b>Phone number:</b> [simcard.phone_number]")
-	. += span_info("Right button (RMB) for the settings. Left button (LMB) for calling and call options.")
+	if(simcard)
+		if(!simcard.username)
+			. += span_warning("[simcard]] has no username.")
+		else
+			. += span_info("<b>Username:</b> [simcard.username]")
+		. += span_info("<b>Phone number:</b> [simcard.phone_number]")
+		. += span_info("Right button (RMB) for the settings. Left button (LMB) for calling and call options.")
 
 /obj/item/cellphone/attack_self(mob/user, modifiers)
 	. = ..()

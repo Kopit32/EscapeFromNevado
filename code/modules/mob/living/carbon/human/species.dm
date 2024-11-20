@@ -392,7 +392,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * * pref_load - Preferences to be loaded from character setup, loads in preferred mutant things like bodyparts, digilegs, skin color, etc.
  */
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	SHOULD_CALL_PARENT(TRUE)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
 		C.gender = PLURAL
@@ -482,7 +481,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * * pref_load - Preferences to be loaded from character setup, loads in preferred mutant things like bodyparts, digilegs, skin color, etc.
  */
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
-	SHOULD_CALL_PARENT(TRUE)
 	if(C.dna.species.exotic_bloodtype)
 		C.dna.blood_type = random_blood_type()
 	if(DIGITIGRADE in species_traits)
@@ -1717,13 +1715,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		//Remove any slowdown from the cold.
 		humi.remove_movespeed_modifier(/datum/movespeed_modifier/cold)
 		// display alerts based on how hot it is
-		switch(humi.bodytemperature)
-			if(bodytemp_heat_damage_limit to BODYTEMP_HEAT_WARNING_2)
-				humi.throw_alert("temp", /atom/movable/screen/alert/hot, 1)
-			if(BODYTEMP_HEAT_WARNING_2 to BODYTEMP_HEAT_WARNING_3)
-				humi.throw_alert("temp", /atom/movable/screen/alert/hot, 2)
-			else
-				humi.throw_alert("temp", /atom/movable/screen/alert/hot, 3)
+
+		if(humi.bodytemperature >= bodytemp_heat_damage_limit && humi.bodytemperature <= BODYTEMP_HEAT_WARNING_2)
+			humi.throw_alert("temp", /atom/movable/screen/alert/hot, 1)
+		else if(humi.bodytemperature >= BODYTEMP_HEAT_WARNING_2 && humi.bodytemperature <= BODYTEMP_HEAT_WARNING_3)
+			humi.throw_alert("temp", /atom/movable/screen/alert/hot, 2)
+		else
+			humi.throw_alert("temp", /atom/movable/screen/alert/hot, 3)
 
 	// Body temperature is too cold, and we do not have resist traits
 	else if(humi.bodytemperature < bodytemp_cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
@@ -1733,13 +1731,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		// Apply cold slow down
 		humi.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/cold, multiplicative_slowdown = ((bodytemp_cold_damage_limit - humi.bodytemperature) / COLD_SLOWDOWN_FACTOR))
 		// Display alerts based how cold it is
-		switch(humi.bodytemperature)
-			if(BODYTEMP_COLD_WARNING_2 to bodytemp_cold_damage_limit)
-				humi.throw_alert("temp", /atom/movable/screen/alert/cold, 1)
-			if(BODYTEMP_COLD_WARNING_3 to BODYTEMP_COLD_WARNING_2)
-				humi.throw_alert("temp", /atom/movable/screen/alert/cold, 2)
-			else
-				humi.throw_alert("temp", /atom/movable/screen/alert/cold, 3)
+		if(humi.bodytemperature >= BODYTEMP_COLD_WARNING_2 && humi.bodytemperature <= bodytemp_cold_damage_limit)
+			humi.throw_alert("temp", /atom/movable/screen/alert/cold, 1)
+		if(humi.bodytemperature >= BODYTEMP_COLD_WARNING_3 && humi.bodytemperature <= BODYTEMP_COLD_WARNING_2)
+			humi.throw_alert("temp", /atom/movable/screen/alert/cold, 2)
+		else
+			humi.throw_alert("temp", /atom/movable/screen/alert/cold, 3)
 
 	// We are not to hot or cold, remove status and moods
 	else
@@ -1794,13 +1791,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
 		var/damage_type = is_hulk ? BRUTE : BURN // Why?
 		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
-		switch(humi.coretemperature)
-			if(201 to cold_damage_limit)
-				humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod * delta_time, damage_type)
-			if(120 to 200)
-				humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod * delta_time, damage_type)
-			else
-				humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod * delta_time, damage_type)
+		if(humi.coretemperature >= 201 && humi.coretemperature <= cold_damage_limit)
+			humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod * delta_time, damage_type)
+		else if(humi.coretemperature >= 120 && humi.coretemperature <= 200)
+			humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod * delta_time, damage_type)
+		else
+			humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod * delta_time, damage_type)
 
 /**
  * Used to apply burn wounds on random limbs

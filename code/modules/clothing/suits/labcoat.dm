@@ -2,6 +2,7 @@
 	name = "labcoat"
 	desc = "A suit that protects against minor chemical spills."
 	icon_state = "labcoat"
+	icon = 'icons/obj/clothing/suits.dmi'
 	inhand_icon_state = "labcoat"
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|ARMS
@@ -50,6 +51,7 @@
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
+	icon = 'icons/obj/clothing/suits.dmi'
 	icon_state = "labgreen"
 	inhand_icon_state = "labgreen"
 
@@ -65,6 +67,7 @@
 
 /obj/item/clothing/suit/toggle/labcoat/virologist
 	name = "virologist labcoat"
+	icon = 'icons/obj/clothing/suits.dmi'
 	desc = "A suit that protects against minor chemical spills. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir"
 

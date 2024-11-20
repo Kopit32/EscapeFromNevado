@@ -210,13 +210,12 @@
 			playsound(src, grenade_disarm_sound, 65, FALSE)
 		if(initial_pin)
 			qdel(initial_pin)
-			sleep(1 SECONDS) //OMG. IT'S INITIAL_PIN <3 <3 <3
 			if(loud)
 				playsound(src, 'modular_septic/sound/weapons/grenade_safety.ogg', 65, FALSE)
 				sound_hint()
 			for(var/mob/living/carbon/inborn in range(7, src))
-				if(inborn.dna?.species?.id == SPECIES_INBORN)
-					inborn.emote("smile") // :3
+//				if(inborn.dna?.species?.id == SPECIES_INBORN)
+//					inborn.emote("smile") // :3
 			pin = new copy_of_pin(src)
 			update_appearance(UPDATE_ICON)
 		else

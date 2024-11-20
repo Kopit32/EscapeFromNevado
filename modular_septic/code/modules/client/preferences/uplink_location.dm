@@ -7,4 +7,5 @@
 	return list(UPLINK_SDCARD)
 
 /datum/preference/choiced/uplink_location/is_accessible(datum/preferences/preferences)
+	..()
 	return FALSE

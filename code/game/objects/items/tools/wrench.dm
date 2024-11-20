@@ -39,6 +39,7 @@
 
 /obj/item/wrench/medical
 	name = "medical wrench"
+	icon = 'icons/obj/tools.dmi'
 	desc = "A medical wrench with common(medical?) uses. Can be found in your hand."
 	icon_state = "wrench_medical"
 	force = 2 //MEDICAL

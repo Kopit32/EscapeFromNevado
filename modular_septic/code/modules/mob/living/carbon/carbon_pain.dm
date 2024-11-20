@@ -317,8 +317,8 @@
 			var/mob/living/carbon/human/human_src = src
 			if(human_src.dna?.species)
 				force_emote = human_src.dna.species.get_pain_emote(power)
-		if(force_emote && prob(power))
-			emote(force_emote)
+//		if(force_emote && prob(power))
+//			emote(force_emote)
 
 	// Briefly flash the pain overlay
 	flash_pain(power)

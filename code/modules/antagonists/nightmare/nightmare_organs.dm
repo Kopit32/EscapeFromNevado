@@ -19,7 +19,7 @@
 	M.AddSpell(SW)
 	shadowwalk = SW
 
-/obj/item/organ/brain/nightmare/Remove(mob/living/carbon/M, special = FALSE)
+/obj/item/organ/brain/nightmare/Remove(mob/living/carbon/M, special = FALSE, no_id_transfer = FALSE)
 	if(shadowwalk)
 		M.RemoveSpell(shadowwalk)
 	return ..()

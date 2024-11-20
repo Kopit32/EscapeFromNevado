@@ -137,6 +137,7 @@
 
 /obj/item/clothing/head/helmet/blueshirt
 	name = "blue helmet"
+	icon = 'icons/obj/clothing/hats.dmi'
 	desc = "A reliable, blue tinted helmet reminding you that you <i>still</i> owe that engineer a beer."
 	icon_state = "blueshift"
 	inhand_icon_state = "blueshift"
@@ -268,6 +269,7 @@
 /obj/item/clothing/head/helmet/roman
 	name = "\improper Roman helmet"
 	desc = "An ancient helmet made of bronze and leather."
+	icon = 'icons/obj/clothing/hats.dmi'
 	flags_inv = HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	armor = list(MELEE = 25, BULLET = 0, LASER = 25, ENERGY = 10, BOMB = 10, BIO = 0, FIRE = 100, ACID = 50, WOUND = 5)
@@ -294,6 +296,7 @@
 /obj/item/clothing/head/helmet/gladiator
 	name = "gladiator helmet"
 	desc = "Ave, Imperator, morituri te salutant."
+	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "gladiator"
 	inhand_icon_state = "gladiator"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
