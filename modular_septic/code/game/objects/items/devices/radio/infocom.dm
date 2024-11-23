@@ -2,7 +2,7 @@
 #define FAST_BEEPING 2
 
 /obj/machinery/infocom
-	name = "Infocom"
+	name = "Настенная радио линия"
 	desc = "An information communication machine, a very creative name! It's a device used to dispense information when used, how do you know that? I don't fucking know, click on it to learn how."
 	icon = 'modular_septic/icons/obj/machinery/intercom.dmi'
 	icon_state = "infocom"
@@ -14,8 +14,8 @@
 	var/virused = FALSE
 	var/tip_sound = 'modular_septic/sound/efn/infocom_trigger.ogg'
 	var/untip_sound = 'modular_septic/sound/efn/infocom_untrigger.ogg'
-	var/list/voice_lines = list("This place is damp and dirty, many of the rooms don't make sense but I can help you.", "Find more Infocoms next to things you're curious about, they say different things.", "It'll tell you the location name and what you can find there.", \
-	"Avoid everyone! Or kill them, they're out to get your loot and your life.")
+	var/list/voice_lines = list("Это грязное и сырое место, некоторые комнаты не имеют и малельшего смысла... Не бойся, я помогу тебе, небось случайно нажал на кнопку, да?", "Найди следующие настенные радио линии, они наставят тебя на путь верный.", "Если что, они служат для выдачи информации по комнате: зачем, кого и для чего.", \
+	"Сторонись любого! Ну иль УБЕЙ его, они пришли ЗА ТВОЕЙ ЖИЗНЬЮ и твоими ЦЕННОСТЯМИ. Удачи, ПИИИИП.")
 	var/tipped = FALSE
 	var/voice_delay = 3 SECONDS
 	var/cooldown_delay = 3 SECONDS
@@ -23,12 +23,12 @@
 	var/state
 
 /obj/machinery/infocom/combat
-	name = "Evil Infocom"
-	desc = "An information communication machine, specifically used for relaying calm and concise information about combat."
+	name = "Злая настенная радио линия"
+	desc = "Информационно-коммуникационная машина, специально используемая для передачи спокойной и лаконичной информации о боевых действиях."
 	icon_state = "infocom_evil"
 	base_icon_state = "infocom_evil"
 	radiotune = list('modular_septic/sound/efn/evilcom1.ogg', 'modular_septic/sound/efn/evilcom2.ogg', 'modular_septic/sound/efn/evilcom3.ogg')
-	voice_lines = list("NO-ONE BUT YOU CAN ESCAPE WILLINGLY.", "TAKE A GUN, TAKE SOMETHING HEAVY", "DEFEND YOURSELF AT ALL COSTS, KILL EVERYONE IN YOUR WAY", "DON'T THINK, SHOOT.")
+	voice_lines = list("НИКТО, КРОМЕ ТЕБЯ, НЕ МОЖЕТ СБЕЖАТЬ ПО СОБСТВЕННОМУ ЖЕЛАНИЮ.", "ВОЗЬМИ ПУШКУ, ЧТО-ТО ПОКРЕПЧЕ.", "ЗАЩИТИ СЕБЯ ЛЮБОЙ ЦЕННОЙ, УБИВАЙ УБИВАЙ УБИВАЙ КАЖДОГО НА СВОЁМ ПУТИ.", "ВИНТОВКА ЭТО ПРАЗДНИК - РАСХУЯРЬ ЧЕЛОВЕКА.", "СМЕШАЙ КАЖДОГО С ГРЯЗЬЮ.")
 	voice_delay = 2.5 SECONDS
 	speak_prob = 100
 
@@ -76,8 +76,8 @@
 /obj/machinery/infocom/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(tipped)
-		var/explicit = pick("fucking", "goddamn", "goshdarn", "fricking")
-		to_chat(user, span_notice("I need to let it [explicit] speak."))
+		var/explicit = pick("блядь", "ебучий", "сука", "конченный")
+		to_chat(user, span_notice("Мне нужно дать высказать следующее: [explicit]."))
 		return
 	playsound(src, tip_sound, 65, FALSE)
 	tipped = TRUE

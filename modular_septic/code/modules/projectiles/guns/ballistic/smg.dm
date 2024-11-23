@@ -25,7 +25,7 @@
 
 // ppsh
 /obj/item/gun/ballistic/automatic/remis/smg/ppsh
-	name = "\improper Papasha SMG"
+	name = "\improper пистолет-пулемёт Пахана"
 	desc = "Despite the dated appearance the Papasha is more of a machine pistol than an SMG, the unreliable drum magazine being discarded by the Death Sec Unit decades ago due to many mechanical faults."
 	icon = 'modular_septic/icons/obj/items/guns/smg.dmi'
 	base_icon_state = "ppsh"
@@ -61,7 +61,7 @@
 	mag_type =	/obj/item/ammo_box/magazine/hksmg22lr
 	weapon_weight = WEAPON_LIGHT
 	bolt_type = BOLT_TYPE_LOCKING
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	force = 10
 	recoil = 0.2
 	fire_delay = 2
@@ -86,7 +86,7 @@
 	custom_price = 10000
 
 /obj/item/gun/ballistic/automatic/remis/smg/bastardo
-	name = "\improper Feio Bastardo R1 submachine gun"
+	name = "\improper Bastardo Induztries R1 submachine gun"
 	desc = "A fully-automatic submachine gun issued to ZoomTech officers and military force with an accelerated fire delay, comes with a folding stock, and a threaded barrel for suppression."
 	icon = 'modular_septic/icons/obj/items/guns/48x32.dmi'
 	lefthand_file = 'modular_septic/icons/obj/items/guns/inhands/smg_lefthand.dmi'

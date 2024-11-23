@@ -23,8 +23,8 @@
 	var/unrack_sound_vary = TRUE
 
 /obj/item/suppressor
-	name = "suppressor"
-	desc = "A multi-caliber suppressor for the discerete massacre of homeless, children, and homeless children."
+	name = "глушитель"
+	desc = "мультикалиберный прибор для бесмушной стрельбы. Разрешает стрелять в библиотеке!"
 	icon = 'modular_septic/icons/obj/items/gun_mods/mods.dmi'
 	icon_state = "suppressor"
 
@@ -100,7 +100,7 @@
 
 /obj/item/gun/ballistic/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("I need to hold [src] to modify it."))
+		to_chat(user, span_warning("Мне нужно держать [src], чтобы установить это."))
 		return TRUE
 
 	if(!can_modify_ammo)
@@ -108,21 +108,21 @@
 
 	if(bolt_type == BOLT_TYPE_STANDARD)
 		if(get_ammo())
-			to_chat(user, span_warning("I can't get at the internals while the gun has a bullet in it!"))
+			to_chat(user, span_warning("Я не могу с этим работать, пока там есть пуля!"))
 			return
 
 		else if(!bolt_locked)
-			to_chat(user, span_warning("I can't get at the internals while the bolt is down!"))
+			to_chat(user, span_warning("Я не могу достать из этого пулю, пока затвор закрыт!"))
 			return
 
-	to_chat(user, span_notice("I begin to tinker with [src]..."))
+	to_chat(user, span_notice("Я начинаю возиться с [src]..."))
 	tool.play_tool_sound(src)
 	if(!tool.use_tool(src, user, 3 SECONDS))
 		return TRUE
 
 	if(blow_up(user))
-		user.visible_message(span_danger("[src] goes off!"), \
-							span_userdanger("[src] goes off in my face!"))
+		user.visible_message(span_danger("[src] отлетает в сторону!"), \
+							span_userdanger("[src] улетает в моё лицо!"))
 		return
 
 	if(magazine.caliber == initial_caliber)
@@ -130,13 +130,13 @@
 		if(alternative_ammo_misfires)
 			can_misfire = TRUE
 		fire_sound = alternative_fire_sound
-		to_chat(user, span_notice("I modify [src]. Now it will fire [alternative_caliber] rounds."))
+		to_chat(user, span_notice("Я изменил [src]. Теперь он стреляет патронами калибра [alternative_caliber]."))
 	else
 		magazine.caliber = initial_caliber
 		if(alternative_ammo_misfires)
 			can_misfire = FALSE
 		fire_sound = initial_fire_sound
-		to_chat(user, span_notice("I reset [src]. Now it will fire [initial_caliber] rounds."))
+		to_chat(user, span_notice("Я вернул истинный калибр [src]. Теперь он стреляет патронами калибра [initial_caliber]."))
 
 /obj/item/gun/ballistic/install_suppressor(obj/item/suppressor/suppressor)
 	suppressed = suppressor
@@ -173,10 +173,10 @@
 	if(can_unsuppress && suppressed && user.is_holding(src))
 		var/obj/item/suppressor/suppressor = suppressed
 		playsound(user, 'modular_septic/sound/weapons/guns/silencer_start.ogg', 60, TRUE)
-		to_chat(user, span_notice("I start unscrewing."))
+		to_chat(user, span_notice("Я начал откручивать."))
 		if(!do_after(user, 3 SECONDS, src))
 			return
-		to_chat(user, span_notice("I unscrew [suppressor] from [src]."))
+		to_chat(user, span_notice("Я открутил [suppressor] с [src]."))
 		playsound(user, 'modular_septic/sound/weapons/guns/silencer_off.ogg', 75, TRUE)
 		user.put_in_hands(suppressor)
 		clear_suppressor()
@@ -195,7 +195,7 @@
 			if(tac_reloads)
 				eject_magazine(user, FALSE, new_magazine)
 			else
-				to_chat(user, span_notice("There's already a [magazine_wording] in [src]."))
+				to_chat(user, span_notice("Здесь уже находится [magazine_wording] в [src]."))
 		return
 	if(istype(A, /obj/item/ammo_casing) || istype(A, /obj/item/ammo_box))
 		if(bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
@@ -206,7 +206,7 @@
 				chambered = null
 			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
 			if(num_loaded)
-				to_chat(user, span_notice("I load [num_loaded] [cartridge_wording]\s into [src]."))
+				to_chat(user, span_notice("Я засунул [num_loaded] [cartridge_wording]\s в [src]."))
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if(isnull(chambered) && (bolt_type == BOLT_TYPE_NO_BOLT))
 					chamber_round()
@@ -216,24 +216,24 @@
 	if(istype(A, /obj/item/suppressor))
 		var/obj/item/suppressor/suppressor = A
 		if(!can_suppress)
-			to_chat(user, span_warning("I can't figure out how to fit [suppressor] on [src]!"))
+			to_chat(user, span_warning("на [src] нет места под установку [suppressor]!"))
 			return
 		if(!user.is_holding(src))
-			to_chat(user, span_warning("I need be holding [src] to fit [suppressor] to it!"))
+			to_chat(user, span_warning("Мне нужно удерживать [src] в руках, чтоб установить [suppressor]!"))
 			return
 		if(suppressed)
-			to_chat(user, span_warning("[src] already has a suppressor!"))
+			to_chat(user, span_warning("на [src] уже установлен глушитель!"))
 			return
 		if(user.transferItemToLoc(suppressor, src))
 			install_suppressor(suppressor)
 			playsound(user, 'modular_septic/sound/weapons/guns/silencer_start.ogg', 60, TRUE)
-			to_chat(user, span_notice("I start screwing."))
+			to_chat(user, span_notice("Я начал откручивать."))
 			if(!do_after(user, 3 SECONDS, src))
 				user.put_in_hands(suppressor)
 				playsound(user, 'modular_septic/sound/weapons/guns/silencer_fumble.ogg', 25, TRUE)
 				clear_suppressor()
 				return
-			to_chat(user, span_notice("I screw [suppressor] onto [src]."))
+			to_chat(user, span_notice("Я установил [suppressor] на [src]."))
 			playsound(user, 'modular_septic/sound/weapons/guns/silencer_on.ogg', 75, TRUE)
 			return
 

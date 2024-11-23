@@ -1,6 +1,6 @@
 /obj/item/shit
-	name = "shit"
-	desc = "Human fecal matter. How pleasant."
+	name = "кал"
+	desc = "Человеческие отходы... вроде. Не очень приятное зрелище."
 	icon = 'modular_septic/icons/obj/items/shit.dmi'
 	icon_state = "poo1"
 	base_icon_state = "poo"

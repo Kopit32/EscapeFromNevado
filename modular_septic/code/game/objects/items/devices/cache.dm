@@ -4,8 +4,8 @@
 #define CACHE_OPENING 4
 
 /obj/machinery/cache
-	name = "Wall-mounted Cache"
-	desc = "A cache meant for securing goods in a nice, steel-reinforced package."
+	name = "Настенный схрон"
+	desc = "Специально вмонтированный в стену схрон предназначенный для хранения товаров в красивой, армированной сталью, упаковке."
 	icon = 'modular_septic/icons/obj/structures/efn.dmi'
 	icon_state = "cache"
 	base_icon_state = "cache"
@@ -68,25 +68,25 @@
 /obj/machinery/cache/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!cover_open)
-		to_chat(user, span_warning("The cover is not open."))
+		to_chat(user, span_warning("крышка закрыта."))
 		return
 	if(!locked)
-		to_chat(user, span_warning("[src] has already been successfully hacked."))
+		to_chat(user, span_warning("[src] уже успешно вскрыт."))
 		return
 	if(GET_MOB_SKILL_VALUE(user, SKILL_ELECTRONICS) <= 4)
-		to_chat(user, span_danger("I literally don't know how any of this shit works."))
+		to_chat(user, span_danger("Я, бля, не понимаю как эта хуета работает. Ебучие технологии."))
 		return
-	to_chat(user, span_warning("I begin hacking."))
+	to_chat(user, span_warning("Я начинаю вскрывать..."))
 	if(!do_after(user, 1.2 SECONDS, src))
 		to_chat(user, span_warning(fail_msg()))
 		return
-	to_chat(user, span_warning("I take apart the stupid wires."))
+	to_chat(user, span_warning("Я оторвал какую-то проводку."))
 	playsound(src, firsthack, 70, FALSE)
 	do_sparks(1, FALSE, src)
 	if(!do_after(user, 1.2 SECONDS, src))
 		to_chat(user, span_warning(fail_msg()))
 		return
-	to_chat("I successfully hotwire the [src]!")
+	to_chat("Я успешно достал правильный провод [src]!")
 	playsound(src, secondhack, 70, FALSE)
 	do_sparks(2, FALSE, src)
 	locked = FALSE
@@ -96,34 +96,34 @@
 	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	playsound(src, buttonsound, 75, FALSE)
 	if(locked)
-		user.visible_message(span_notice("[user] presses the lock button, but It only buzzes!"), \
-		span_notice("[fail_msg()] The damn thing is fucking locked!"))
+		user.visible_message(span_notice("[user] нажимает на кнопку, однако та только жужжит."), \
+		span_notice("[fail_msg()] проклятье, оно закрыто!"))
 		return
 	else
-		user.visible_message(span_notice("[user] presses the lock button"), \
-		span_notice("I press the lock button on the [src]."))
+		user.visible_message(span_notice("[user] нажимает на кнопку."), \
+		span_notice("Я нажимаю на кнопку [src]."))
 		open_cache()
 
 /obj/machinery/cache/attack_hand_tertiary(mob/living/user, list/modifiers)
 	. = ..()
 	if(cover_open)
-		to_chat(user, span_warning("[fail_msg()] It's already fucking broken I don't need to break it!"))
+		to_chat(user, span_warning("[fail_msg()] оно уже вскрыто, нет смысла далее ломать!"))
 		return
-	to_chat(user, span_notice("I start ripping the cover off from [src]..."))
+	to_chat(user, span_notice("Я начинаю открывать крышку с [src]..."))
 	if(!do_after(user, 2 SECONDS, src))
 		to_chat(user, span_warning("[fail_msg()]"))
 		return
 	if(GET_MOB_ATTRIBUTE_VALUE(user, STAT_STRENGTH) > 11)
-		user.visible_message(span_danger("[user] rips the protective cover off the [src]!") , \
-			span_warning("I rip the protective cover off of the [src]!"))
+		user.visible_message(span_danger("[user] отрывает со всей силой пластину [src]!") , \
+			span_warning("Я оторвал пластину [src]!"))
 		open_cover()
 	else
-		to_chat(user, span_warning("[fail_msg()] The cover is firm!"))
+		to_chat(user, span_warning("[fail_msg()] крышка оказалась сильнее, чем я думал!"))
 	return COMPONENT_TERTIARY_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cache/crowbar_act(mob/living/user, obj/item/tool)
 	if(cover_open)
-		to_chat(user, span_warning("[fail_msg()] It's already fucking broken I don't need to break it!"))
+		to_chat(user, span_warning("[fail_msg()] оно уже вскрыто, нет смысла далее ломать!"))
 		return TRUE
 	to_chat(user, span_notice("I start ripping the cover off from [src]..."))
 	if(!do_after(user, 1.2 SECONDS, src))

@@ -1,13 +1,13 @@
 //GUNCASES//
 /obj/structure/guncase
-	name = "gun locker"
-	desc = "A locker that holds guns."
+	name = "оруженый шкафчик"
+	desc = "Шкафчик с полками для хранения огнестрельного вооружения."
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "shotguncase"
 	anchored = FALSE
 	density = TRUE
 	opacity = FALSE
-	var/case_type = ""
+	var/case_type = "egun"
 	var/gun_category = /obj/item/gun
 	var/open = TRUE
 	var/capacity = 4
@@ -38,7 +38,7 @@
 		if(LAZYLEN(contents) < capacity)
 			if(!user.transferItemToLoc(I, src))
 				return
-			to_chat(user, span_notice("You place [I] in [src]."))
+			to_chat(user, span_notice("Ты положил [I] в [src]."))
 			update_appearance()
 		else
 			to_chat(user, span_warning("[src] is full."))
@@ -125,14 +125,14 @@
 			SSexplosions.low_mov_atom += contents
 
 /obj/structure/guncase/shotgun
-	name = "shotgun locker"
-	desc = "A locker that holds shotguns."
+	name = "оружейный шкаф для дробовиков"
+	desc = "Шкафчик, специально спроектированный, для хранения дробовиков."
 	case_type = "shotgun"
 	gun_category = /obj/item/gun/ballistic/shotgun
 
 /obj/structure/guncase/ecase
-	name = "energy gun locker"
-	desc = "A locker that holds energy guns."
+	name = "оружейный шкаф для энергетического оружия"
+	desc = "Шкафчик, специально спроектированный, для хранения энергетического вооружения."
 	icon_state = "ecase"
 	case_type = "egun"
-	gun_category = /obj/item/gun/energy/e_gun
+	gun_category = /obj/item/gun/energy
