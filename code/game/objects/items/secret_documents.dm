@@ -8,8 +8,8 @@
  * Save for the inhand, this does not actually have anything in common with /obj/item/paper.
 */
 /obj/item/documents
-	name = "secret documents"
-	desc = "\"Top Secret\" documents."
+	name = "Засекреченные документы"
+	desc = "На этих папках установлен штамп \"Совершенно секретно\"."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "docs_generic"
 	inhand_icon_state = "paper"

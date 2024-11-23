@@ -125,16 +125,16 @@
 	if(cover_open)
 		to_chat(user, span_warning("[fail_msg()] оно уже вскрыто, нет смысла далее ломать!"))
 		return TRUE
-	to_chat(user, span_notice("I start ripping the cover off from [src]..."))
+	to_chat(user, span_notice("я начинаю отрывать пластину с [src]..."))
 	if(!do_after(user, 1.2 SECONDS, src))
 		to_chat(user, span_warning("[fail_msg()]"))
 		return TRUE
 	if(GET_MOB_ATTRIBUTE_VALUE(user, STAT_STRENGTH) > 7)
-		user.visible_message(span_danger("[user] rips the protective cover off the [src] with the [tool]!") , \
-			span_warning("I rip the protective cover off of the [src] with the [tool]!"))
+		user.visible_message(span_danger("[user] отрывает пластину с [src], используя [tool]!") , \
+			span_warning("Я с силой оторвал крышку [src], используя [tool]!"))
 		open_cover()
 	else
-		to_chat(user, span_warning("[fail_msg()] The cover is too firm for me!"))
+		to_chat(user, span_warning("[fail_msg()] крышка оказалась сильнее, чем я думал!"))
 	return TRUE
 
 /obj/machinery/cache/proc/open_cover(mob/living/user)
@@ -153,12 +153,12 @@
 	if(prob(20))
 		nice = "nice"
 	if(state == CACHE_CLOSED)
-		visible_message(span_achievementgood("[src] slides open with a [nice] hiss!"))
+		visible_message(span_achievementgood("крышка [src] устремляется наверх [nice], с хорошо слышимым скрежетом!"))
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, FALSE)
 		playsound(src, cacheOpen, 85, FALSE)
 		INVOKE_ASYNC(src, .proc/open)
 	else
-		visible_message(span_danger("[src] slides closed with a [nice] hiss!"))
+		visible_message(span_danger("крышка [src] устремляется вниз [nice], с хорошо слышимым скрежетом!"))
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, TRUE)
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_HIDE_FROM, usr)
 		playsound(src, cacheClose, 85, FALSE)
