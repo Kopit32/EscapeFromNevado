@@ -12,8 +12,8 @@
  * Oxygen
  */
 /obj/item/tank/internals/oxygen
-	name = "oxygen tank"
-	desc = "A tank of oxygen, this one is blue."
+	name = "Кислородный баллон"
+	desc = "Баллон с кислородом, увесистый, этот покрашен в <B><span class='blue'>синий</span></B>."
 	icon_state = "oxygen"
 	tank_holder_icon_state = "holder_oxygen"
 	distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
@@ -27,13 +27,13 @@
 
 
 /obj/item/tank/internals/oxygen/yellow
-	desc = "A tank of oxygen, this one is yellow."
+	desc = "Баллон с кислородом, увесистый, этот покрашен в <B><span class='yellow'>жёлтый</span></B>."
 	icon_state = "oxygen_f"
 	tank_holder_icon_state = "holder_oxygen_f"
 	dog_fashion = null
 
 /obj/item/tank/internals/oxygen/red
-	desc = "A tank of oxygen, this one is red."
+	desc = "Баллон с кислородом, увесистый, этот покрашен в <B><span class='red'>красный</span></B>."
 	icon_state = "oxygen_fr"
 	tank_holder_icon_state = "holder_oxygen_fr"
 	dog_fashion = null
@@ -45,8 +45,8 @@
  * Anesthetic
  */
 /obj/item/tank/internals/anesthetic
-	name = "anesthetic tank"
-	desc = "A tank with an N2O/O2 gas mix."
+	name = "Баллон N2O/O2"
+	desc = "Баллон со смесью газов N2O/O2."
 	icon_state = "anesthetic"
 	inhand_icon_state = "an_tank"
 	tank_holder_icon_state = "holder_anesthetic"
@@ -141,8 +141,8 @@
  * Emergency Oxygen
  */
 /obj/item/tank/internals/emergency_oxygen
-	name = "emergency oxygen tank"
-	desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
+	name = "Маленький кислородный баллон"
+	desc = "Маленький или аварийный, как его ещё называют, баллон с кислородом. Содержит сильно ограниченное количество кислородной смеси."
 	icon_state = "emergency"
 	worn_icon_state = "emergency"
 	tank_holder_icon_state = "holder_emergency"
@@ -164,7 +164,7 @@
 	return
 
 /obj/item/tank/internals/emergency_oxygen/engi
-	name = "extended-capacity emergency oxygen tank"
+	name = "Небольшой кислородный баллон"
 	icon_state = "emergency_engi"
 	worn_icon_state = "emergency_engi"
 	tank_holder_icon_state = "holder_emergency_engi"
@@ -175,7 +175,7 @@
 	return
 
 /obj/item/tank/internals/emergency_oxygen/double
-	name = "double emergency oxygen tank"
+	name = "Двойной небольшой кислородный баллон"
 	icon_state = "emergency_double"
 	worn_icon_state = "emergency_engi"
 	tank_holder_icon_state = "holder_emergency_engi"
