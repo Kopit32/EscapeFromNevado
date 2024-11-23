@@ -688,9 +688,7 @@
 /area/maintenance/liminal/darkclub)
 "ed" = (
 /obj/machinery/light/small/directional/east,
-/obj/machinery/vending/soder{
-	onstation = 0
-	},
+/obj/machinery/vending/soder,
 /turf/open/floor/iron/white/corner{
 	dir = 4
 	},
@@ -1149,9 +1147,7 @@
 /area/maintenance/liminal/green)
 "hG" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/vending/wardrobe/science_wardrobe{
-	onstation = 0
-	},
+/obj/machinery/vending/wardrobe/science_wardrobe,
 /turf/open/floor/iron,
 /area/maintenance/liminal/darkgreen)
 "hO" = (
@@ -7221,9 +7217,7 @@
 /turf/open/floor/wood/large,
 /area/maintenance/liminal/darkgreen)
 "Yo" = (
-/obj/machinery/vending/boozeomat/all_access{
-	onstation = 0
-	},
+/obj/machinery/vending/boozeomat/all_access,
 /turf/open/floor/iron,
 /area/maintenance/liminal/train)
 "Yp" = (

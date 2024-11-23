@@ -32,9 +32,7 @@
 /turf/open/floor/grass,
 /area/maintenance/liminal/intro)
 "eX" = (
-/obj/machinery/vending/coffee{
-	onstation = 0
-	},
+/obj/machinery/vending/coffee,
 /obj/effect/turf_decal/delivery{
 	color = "#DC143C"
 	},
@@ -263,9 +261,7 @@
 /obj/structure/sign/departments/restroom{
 	pixel_x = -32
 	},
-/obj/machinery/vending/soder{
-	onstation = 0
-	},
+/obj/machinery/vending/soder,
 /obj/effect/turf_decal/delivery{
 	color = "#DC143C"
 	},

@@ -33,6 +33,7 @@
 		/obj/item/ammo_box/magazine/ammo_stack/a500/loaded,
 	)
 	var/list/dispensible_medical = list(
+		/obj/item/retractor,
 		/obj/item/scalpel,
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/gauze,

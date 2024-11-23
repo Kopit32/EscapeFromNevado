@@ -6,19 +6,19 @@
 	button_icon = "heart"
 
 /datum/interaction/romance/handholding
-	name = "Handholding"
-	desc = "Hold their hands. How cute!"
-	message = span_love("%USER holds %TARGET's hand.")
-	user_message = span_love("I hold %TARGET's hand.")
-	target_message = span_love("%USER holds my hand.")
+	name = "Держаться за руки"
+	desc = "Возьмёмся за руки. Как мило!"
+	message = span_love("%USER держит %TARGET за руку.")
+	user_message = span_love("Я держу %TARGET за руку.")
+	target_message = span_love("%USER держит меня за руку.")
 	button_icon = "hands-helping"
 
 /datum/interaction/romance/kisscheeks
-	name = "Kiss Cheeks"
-	desc = "Kiss them. On the cheek."
-	message = span_horny("%USER kisses %TARGET's cheek.")
-	user_message = span_horny("I kiss %TARGET's cheek.")
-	target_message = span_horny("%USER kisses my cheek.")
+	name = "Поцеловать в щеку"
+	desc = "Поцелуй в щеку."
+	message = span_horny("%USER целует %TARGET в щеку.")
+	user_message = span_horny("Я целую %TARGET в щеку.")
+	target_message = span_horny("%USER целует меня в щеку.")
 	button_icon = "kiss-beam"
 
 /datum/interaction/romance/kisscheeks/evaluate_user(datum/component/interactable/user, datum/component/interactable/target, silent)
@@ -38,11 +38,11 @@
 		return FALSE
 
 /datum/interaction/romance/kiss
-	name = "Kiss"
-	desc = "Kiss them. On the mouth."
-	message = span_horny("%USER kisses %TARGET's lips.")
-	user_message = span_horny("I kiss %TARGET's lips.")
-	target_message = span_horny("%USER kisses my lips.")
+	name = "Поцеловать в губы"
+	desc = "Поцелуй в губы."
+	message = span_horny("%USER целует %TARGET в губы.")
+	user_message = span_horny("Я целую %TARGET в губы.")
+	target_message = span_horny("%USER целует меня в губы.")
 	button_icon = "kiss-wink-heart"
 
 /datum/interaction/romance/kiss/evaluate_user(datum/component/interactable/user, datum/component/interactable/target, silent)

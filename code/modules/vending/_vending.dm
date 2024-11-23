@@ -147,7 +147,7 @@
 	  *
 	  * if it doesn't originate from off-station during mapload, everything is free
 	  */
-	var/onstation = TRUE //if it doesn't originate from off-station during mapload, everything is free
+	var/onstation = FALSE //if it doesn't originate from off-station during mapload, everything is free
 	///A variable to change on a per instance basis on the map that allows the instance to force cost and ID requirements
 	var/onstation_override = FALSE //change this on the object on the map to override the onstation check. DO NOT APPLY THIS GLOBALLY.
 
