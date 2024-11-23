@@ -181,9 +181,9 @@
 /mob/p_have(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "has"
+	. = "имеет"
 	if(temp_gender == PLURAL)
-		. = "have"
+		. = "имеет"
 
 /mob/p_are(temp_gender)
 	if(!temp_gender)
