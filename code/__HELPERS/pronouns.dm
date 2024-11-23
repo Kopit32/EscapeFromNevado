@@ -137,11 +137,11 @@
 	. = "it"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "she"
+			. = "она"
 		if(MALE)
-			. = "he"
+			. = "он"
 		if(PLURAL)
-			. = "they"
+			. = "оно"
 	if(capitalized)
 		. = capitalize(.)
 
@@ -156,11 +156,11 @@
 	//SEPTIC EDIT END
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "её"
 		if(MALE)
-			. = "his"
+			. = "его"
 		if(PLURAL)
-			. = "their"
+			. = "их"
 	if(capitalized)
 		. = capitalize(.)
 
@@ -170,11 +170,11 @@
 	. = "it"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "её"
 		if(MALE)
-			. = "him"
+			. = "его"
 		if(PLURAL)
-			. = "them"
+			. = "их"
 	if(capitalized)
 		. = capitalize(.)
 
