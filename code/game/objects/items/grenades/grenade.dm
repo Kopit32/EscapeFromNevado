@@ -46,14 +46,6 @@
 	/// Did we add the component responsible for spawning sharpnel to this?
 	var/shrapnel_initialized
 
-/obj/item/grenade/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] primes [src], then eats it! It looks like [user.p_theyre()] trying to commit suicide!"))
-	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
-	arm_grenade(user, det_time)
-	user.transferItemToLoc(src, user, TRUE)//>eat a grenade set to 5 seconds >rush captain
-	sleep(det_time)//so you dont die instantly
-	return BRUTELOSS
-
 /obj/item/grenade/deconstruct(disassembled = TRUE)
 	if(!disassembled)
 		detonate()
@@ -113,7 +105,7 @@
 	if(user)
 		add_fingerprint(user)
 		if(msg)
-			to_chat(user, span_warning("You prime [src]! [capitalize(DisplayTimeText(det_time))]!"))
+			to_chat(user, span_warning("Ты активировал [src]! [capitalize(DisplayTimeText(det_time))]!"))
 	if(shrapnel_type && shrapnel_radius)
 		shrapnel_initialized = TRUE
 		AddComponent(/datum/component/pellet_cloud, projectile_type=shrapnel_type, magnitude=shrapnel_radius)
@@ -197,3 +189,11 @@
 	. = ..()
 	if(active)
 		user.throw_item(target)
+
+/obj/item/grenade/suicide_act(mob/living/carbon/user)
+	user.visible_message(span_suicide("[user] активирует [src], пока пытается съесть её! Кажется [user.p_theyre()] пытается покончить с собой!"))
+	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
+	arm_grenade(user, det_time)
+	user.transferItemToLoc(src, user, TRUE)//>eat a grenade set to 5 seconds >rush captain
+	sleep(det_time)//so you dont die instantly
+	return BRUTELOSS

@@ -1,6 +1,6 @@
 /obj/item/melee/baton
-	name = "police baton"
-	desc = "A wooden truncheon for beating criminal scum. Left click to stun, right click to harm."
+	name = "Деревянная дубинка"
+	desc = "Деревянная палка, в прошлом пользовавшаяся спросом у силовых ведомств. Левым ударом оглушить, правым побить."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "classic_baton"
 	inhand_icon_state = "classic_baton"
@@ -89,7 +89,7 @@
 		return BATON_ATTACK_DONE
 
 	if(HAS_TRAIT_FROM(target, TRAIT_IWASBATONED, REF(user))) //no doublebaton abuse anon!
-		to_chat(user, span_danger("You fumble and miss [target]!"))
+		to_chat(user, span_danger("Ты замахиваешься и бьёшь мимо [target]!"))
 		return BATON_ATTACK_DONE
 
 	if(stun_animation)
@@ -157,8 +157,8 @@
 /obj/item/melee/baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] = "<span class ='danger'>[user] knocks [target] down with [src]!</span>"
-	.["local"] = "<span class ='userdanger'>[user] knocks you down with [src]!</span>"
+	.["visible"] = "<span class ='danger'>[user] ударяет [target], оглушая при помощи [src]!</span>"
+	.["local"] = "<span class ='userdanger'>[user] ударил тебя со всей дури, используя [src]!</span>"
 
 	return .
 
@@ -198,7 +198,7 @@
 /obj/item/melee/baton/proc/clumsy_check(mob/living/user, mob/living/intented_target)
 	if(!active || !HAS_TRAIT(user, TRAIT_CLUMSY) || prob(50))
 		return FALSE
-	user.visible_message(span_danger("[user] accidentally hits [user.p_them()]self over the head with [src]! What a doofus!"), span_userdanger("You accidentally hit yourself over the head with [src]!"))
+	user.visible_message(span_danger("[user] нарочно замахнулся и ударил себя по голове, используя [src]! Вот же рак!"), span_userdanger("Ты нарочно замахнулся и ударил себя по голове, используя [src]!"))
 
 	if(iscyborg(user))
 		if(affect_cyborg)
@@ -231,14 +231,14 @@
 	custom_price = PAYCHECK_HARD * 4.5
 
 /obj/item/melee/baton/telescopic
-	name = "telescopic baton"
-	desc = "A compact yet robust personal defense weapon. Can be concealed when folded."
+	name = "Телескопическая дубинка"
+	desc = "Компактное, крепкое и мощное оружие. Может быть раскрыто на полную длину."
 	icon_state = "telebaton"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	inhand_icon_state = null
-	attack_verb_continuous = list("hits", "pokes")
-	attack_verb_simple = list("hit", "poke")
+	attack_verb_continuous = list("бьёт", "стукает")
+	attack_verb_simple = list("ударил", "стукнул")
 	worn_icon_state = "tele_baton"
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
@@ -262,15 +262,15 @@
 		hitsound_on = hitsound, \
 		w_class_on = WEIGHT_CLASS_NORMAL, \
 		clumsy_check = FALSE, \
-		attack_verb_continuous_on = list("smacks", "strikes", "cracks", "beats"), \
-		attack_verb_simple_on = list("smack", "strike", "crack", "beat"))
+		attack_verb_continuous_on = list("стукает", "наносит удар", "бьёт", "ударяет"), \
+		attack_verb_simple_on = list("стукнул", "нанёс удар", "побил", "ударил"))
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, .proc/on_transform)
 
 /obj/item/melee/baton/telescopic/suicide_act(mob/user)
 	var/mob/living/carbon/human/human_user = user
 	var/obj/item/organ/brain/our_brain = human_user.getorgan(/obj/item/organ/brain)
 
-	user.visible_message(span_suicide("[user] stuffs [src] up [user.p_their()] nose and presses the 'extend' button! It looks like [user.p_theyre()] trying to clear [user.p_their()] mind."))
+	user.visible_message(span_suicide("[user] подносит [src] прямо к [user.p_their()] носу и нажмимает кнопку 'раскрыть'! Кажется [user.p_theyre()] прямо сейчас покончит с [user.p_their()] мозгом."))
 	if(active)
 		playsound(src, on_sound, 50, TRUE)
 		add_fingerprint(user)
@@ -295,7 +295,7 @@
 
 	src.active = active
 	inhand_icon_state = active ? on_inhand_icon_state : null // When inactive, there is no inhand icon_state.
-	balloon_alert(user, active ? "extended" : "collapsed")
+	balloon_alert(user, active ? "раскрыл" : "сложил")
 	playsound(user ? user : src, on_sound, 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
@@ -329,8 +329,8 @@
 	target.stuttering += 20
 
 /obj/item/melee/baton/security
-	name = "stun baton"
-	desc = "A stun baton for incapacitating people with. Left click to stun, right click to harm."
+	name = "Электрическая дубинка"
+	desc = "Мощная, работающая на аккумуляторах дубинка, способная поражать током нарушителя! Левым ударом оглушить, правым побить."
 
 	icon_state = "stunbaton"
 	inhand_icon_state = "baton"
@@ -338,8 +338,8 @@
 
 	force = 10
 	wound_bonus = 0
-	attack_verb_continuous = list("beats")
-	attack_verb_simple = list("beat")
+	attack_verb_continuous = list("ударяет")
+	attack_verb_simple = list("бьёт")
 
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, BIO = 0, FIRE = 80, ACID = 80)
 
@@ -374,11 +374,11 @@
 
 /obj/item/melee/baton/security/suicide_act(mob/user)
 	if(cell?.charge && active)
-		user.visible_message(span_suicide("[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user] засовывает активированную [name] в [user.p_their()] глотку! Кажется [user.p_theyre()] вот-вот сожгёт себя!"))
 		. = (FIRELOSS)
 		attack(user,user)
 	else
-		user.visible_message(span_suicide("[user] is shoving the [name] down their throat! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user] засовывает [name] в глотку! Кажись [user.p_theyre()] вот-вот задохнётся!"))
 		. = (OXYLOSS)
 
 /obj/item/melee/baton/security/Destroy()
@@ -421,23 +421,23 @@
 /obj/item/melee/baton/security/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("\The [src] is [round(cell.percent())]% charged.")
+		. += span_notice("Панель [src] показывает оставшийся заряд: [round(cell.percent())]%.")
 	else
-		. += span_warning("\The [src] does not have a power source installed.")
+		. += span_warning("\The [src] не имеет вставленного аккумулятора.")
 
 /obj/item/melee/baton/security/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell))
 		var/obj/item/stock_parts/cell/C = W
 		if(cell)
-			to_chat(user, span_warning("[src] already has a cell!"))
+			to_chat(user, span_warning("В [src] уже есть аккумулятор!"))
 		else
 			if(C.maxcharge < cell_hit_cost)
-				to_chat(user, span_notice("[src] requires a higher capacity cell."))
+				to_chat(user, span_notice("[src] требуется аккумулятор большего заряда."))
 				return
 			if(!user.transferItemToLoc(W, src))
 				return
 			cell = W
-			to_chat(user, span_notice("You install a cell in [src]."))
+			to_chat(user, span_notice("Ты установил аккумулятор в [src]."))
 			update_appearance()
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
@@ -448,19 +448,19 @@
 /obj/item/melee/baton/security/proc/tryremovecell(mob/user)
 	if(cell && can_remove_cell)
 		cell.forceMove(drop_location())
-		to_chat(user, span_notice("You remove the cell from [src]."))
+		to_chat(user, span_notice("Ты достал аккумулятор из [src]."))
 
 /obj/item/melee/baton/security/attack_self(mob/user)
 	if(cell?.charge >= cell_hit_cost)
 		active = !active
-		balloon_alert(user, "turned [active ? "on" : "off"]")
+		balloon_alert(user, "переключил в [active ? "активное" : "отключенное"] состояние")
 		playsound(src, "sparks", 75, TRUE, -1)
 	else
 		active = FALSE
 		if(!cell)
-			balloon_alert(user, "no power source!")
+			balloon_alert(user, "нет аккумулятора!")
 		else
-			balloon_alert(user, "out of charge!")
+			balloon_alert(user, "разряжена!")
 	update_appearance()
 	add_fingerprint(user)
 
@@ -491,8 +491,8 @@
 		if(active && cooldown_check <= world.time && !check_parried(target, user))
 			finalize_baton_attack(target, user, modifiers, in_attack_chain = FALSE)
 	else if(!user.combat_mode)
-		target.visible_message(span_warning("[user] prods [target] with [src]. Luckily it was off."), \
-			span_warning("[user] prods you with [src]. Luckily it was off."))
+		target.visible_message(span_warning("[user] пытается оглушить [target], используя [src]. К счастью, она отключена."), \
+			span_warning("[user] пытается оглушить тебя, использовав [src]. К счастью, она отключена."))
 		return BATON_ATTACK_DONE
 
 /obj/item/melee/baton/security/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override)
@@ -521,18 +521,18 @@
 /obj/item/melee/baton/security/proc/apply_stun_effect_end(mob/living/target)
 	var/trait_check = HAS_TRAIT(target, TRAIT_STUNRESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 	if(!target.IsKnockdown())
-		to_chat(target, span_warning("Your muscles seize, making you collapse [trait_check ? ", but your body quickly recovers..." : "!"]"))
+		to_chat(target, span_warning("Твои мышцы начинают невыносимо приносить тебе боль и ты падаешь на пол [trait_check ? ", но выдержав боль, поднимаешься быстро." : "!"]"))
 
 	target.Knockdown(knockdown_time * (trait_check ? 0.1 : 1))
 
 /obj/item/melee/baton/security/get_wait_description()
-	return span_danger("The baton is still charging!")
+	return span_danger("Аккумулятор всё ещё перезаряжается!")
 
 /obj/item/melee/baton/security/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] = span_danger("[user] stuns [target] with [src]!")
-	.["local"] = span_userdanger("[user] stuns you with [src]!")
+	.["visible"] = span_danger("[user] оглушает [target], использовав [src]!")
+	.["local"] = span_userdanger("[user] оглушает тебя [src](-ой)!")
 
 /obj/item/melee/baton/security/get_unga_dunga_cyborg_stun_description(mob/living/target, mob/living/user)
 	. = list()

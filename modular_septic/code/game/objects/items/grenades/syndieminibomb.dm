@@ -56,8 +56,8 @@
 	det_time = 1.5 SECONDS
 
 /obj/item/grenade/frag/impact
-	name = "impact grenade"
-	desc = "A low yield grenade that is designed to detonate on thrown impact. Will not explode when dropped, or placed."
+	name = "Ударная граната"
+	desc = "Граната, которая взрывается после удара об поверхность. Не взорвётся, если упадёт под тобой или будет положена на стол... Вероятно."
 	icon = 'modular_septic/icons/obj/items/grenade.dmi'
 	icon_state = "impactgrenade"
 	base_icon_state = "impactgrenade"
@@ -76,8 +76,8 @@
 		annoying_fucking_beeping()
 
 /obj/item/grenade/frag/semtex
-	name = "semtex grenade"
-	desc = "A high-explosive grenade meant for demolition or extreme-room clearing. Comes with a audible beeper."
+	name = "Граната с семтексом"
+	desc = "Граната, в основе которой взрывчатое вещество с большим радиусом взрыва - семтекс. В неё встроена пищалка."
 	icon_state = "combine"
 	base_icon_state = "combine"
 	det_time = 4 SECONDS
