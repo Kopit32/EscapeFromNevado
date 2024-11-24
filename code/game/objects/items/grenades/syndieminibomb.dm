@@ -17,16 +17,16 @@
 	qdel(src)
 
 /obj/item/grenade/syndieminibomb/concussion
-	name = "HE Grenade"
-	desc = "A compact shrapnel grenade meant to devastate nearby organisms and cause some damage in the process. Pull pin and throw opposite direction."
+	name = "Фугасная граната"
+	desc = "Небольшая разрывная граната для отрыва конечностей. Достань чеку и откинь рычак. Кидай. Ты же ведь кинул?"
 	icon_state = "concussion"
 	ex_heavy = 2
 	ex_light = 3
 	ex_flame = 3
 
 /obj/item/grenade/frag
-	name = "frag grenade"
-	desc = "An anti-personnel fragmentation grenade, this weapon excels at killing soft targets by shredding them with metal shrapnel."
+	name = "Осколочная граната"
+	desc = "Небольшая осколочная граната, предназначенная для поражения осколками противника."
 	icon_state = "frag"
 	shrapnel_type = /obj/projectile/bullet/shrapnel
 	shrapnel_radius = 4
@@ -35,8 +35,8 @@
 	ex_flame = 4
 
 /obj/item/grenade/frag/mega
-	name = "FRAG grenade"
-	desc = "An anti-everything fragmentation grenade, this weapon excels at killing anything any everything by shredding them with metal shrapnel."
+	name = "Осколочная граната"
+	desc = "В отличии от других гранат, распадается на большее количество осколков."
 	shrapnel_type = /obj/projectile/bullet/shrapnel/mega
 	shrapnel_radius = 12
 

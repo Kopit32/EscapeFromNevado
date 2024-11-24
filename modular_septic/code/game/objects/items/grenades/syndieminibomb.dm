@@ -119,8 +119,8 @@
 	annoying_fucking_beeping()
 
 /obj/item/grenade/frag/pipebomb
-	name = "pipebomb"
-	desc = "An improvised explosive device."
+	name = "Трубчатая бомба"
+	desc = "СВУ, сделанная из трубы, пороха и фитиля. Хорошо распадается на множество осколков."
 	icon = 'modular_septic/icons/obj/items/grenade.dmi'
 	icon_state = "ted"
 	base_icon_state = "ted"
@@ -135,8 +135,8 @@
 	icon_state = "ted"
 
 /obj/item/grenade/frag/pipebomb/trap
-	name = "bundle pipebomb"
-	desc = "A bundle of improvised explosive devices, long and thin enough to be planted in the most unexpected places for the most unexpecting executive or professor to stumble by."
+	name = "Связка трубчатых бомб"
+	desc = "СВУ сделанная из смоток труб, мощны в ликвидации не защищённых людей, хорошо устанавливается в дверных проходах."
 	icon_state = "ted2"
 	base_icon_state = "ted2"
 	shrapnel_type = /obj/projectile/bullet/shrapnel/ted
